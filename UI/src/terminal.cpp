@@ -22,3 +22,11 @@ Terminal::~Terminal()
 {
     std::cout << "[DEBUG]: called Terminal destructor" << std::endl; 
 }
+
+void Terminal::Message(const std::string& msg)
+{
+    Point pt;
+    Mode mode;
+    int lastRow = rows;
+    // curWind->GetPos(&pt);
+}

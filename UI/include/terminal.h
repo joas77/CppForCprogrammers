@@ -4,6 +4,7 @@
 #include <sys/ioctl.h>
 #include <sgtty.h>
 #include <signal.h>
+#include <string>
 
 class Terminal {
     static sgttyb        ttym;           // original tty mode
@@ -19,5 +20,6 @@ public:
     void GraphPen();
     void Error();
     void PlainPen();
+    void Message(const std::string& msg);
 
 };

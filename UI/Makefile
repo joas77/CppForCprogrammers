@@ -1,7 +1,7 @@
 CC = g++
 VPATH = src include
 STD = -std=c++17
-CPPFLAGS = $(STD) -Wall -I include
+CPPFLAGS = $(STD) -Wall -Wpedantic -I include
 
 terminal: main.cpp terminal.o
 	$(CC) $(CPPFLAGS) $^ -o $@ 
