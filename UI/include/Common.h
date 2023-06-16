@@ -16,3 +16,7 @@ enum class Mode // Pen mode
     charMask    = 0x00FF,   // characters mask
     modeMask    = 0xFF00,   // mode pen mask
 };
+
+enum class ErrKind {
+    memErr, termErr, sysErr
+};

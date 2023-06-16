@@ -9,8 +9,7 @@ Terminal::Terminal(int rows, int cols)
 {
     if(term)
     {
-        //TODO: print error and kill terminal
-        //Terminal shall be called once
+        Error(ErrKind::termErr, "in Terminal");
     }
 
     term = this;
@@ -23,10 +22,15 @@ Terminal::~Terminal()
     std::cout << "[DEBUG]: called Terminal destructor" << std::endl; 
 }
 
+void Terminal::Error(ErrKind err, const std::string& msg)
+{
+    std::cerr << msg <<std::endl;
+}
+
 void Terminal::Message(const std::string& msg)
 {
-    Point pt;
-    Mode mode;
-    int lastRow = rows;
+    // Point pt;
+    // Mode mode;
+    // int lastRow = rows;
     // curWind->GetPos(&pt);
 }

@@ -18,7 +18,7 @@ public:
     ~Terminal();
     void AlfaPen();
     void GraphPen();
-    void Error();
+    void Error(ErrKind err, const std::string& msg);
     void PlainPen();
     void Message(const std::string& msg);
 
