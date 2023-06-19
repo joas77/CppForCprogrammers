@@ -6,6 +6,7 @@
 
 
 void test_errorMessage();
+void test_errorMessageErrorCallback();
 void test_termOnlyOneInstance();
 
 #endif

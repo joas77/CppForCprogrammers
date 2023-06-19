@@ -1,6 +1,7 @@
 #include <iostream>
 #include "terminal.h"
 
+
 Terminal* Terminal::term = nullptr;
 int Terminal::rows = maxRows;
 int Terminal::cols = maxCols;
@@ -19,12 +20,21 @@ Terminal::Terminal(int rows, int cols)
 
 Terminal::~Terminal()
 {
-    std::cout << "[DEBUG]: called Terminal destructor" << std::endl; 
+    std::cout << "[DEBUG]: called Terminal destructor" << std::endl;
 }
 
 void Terminal::Error(ErrKind err, const std::string& msg)
 {
-    std::cerr << msg <<std::endl;
+    if(errFun!= nullptr) {
+        errFun(err, msg);
+
+    }
+    else {
+        const auto errMsg = "[ERROR]: " + msg + "\n";
+        write(STDOUT_FILENO, errMsg.c_str(), errMsg.size());
+        // uncoment for released code
+        // Interrupt();
+    }
 }
 
 void Terminal::Message(const std::string& msg)
@@ -33,4 +43,17 @@ void Terminal::Message(const std::string& msg)
     // Mode mode;
     // int lastRow = rows;
     // curWind->GetPos(&pt);
+
+}
+
+void Terminal::WriteCode(const std::string_view code)
+{
+    write(STDOUT_FILENO, code.data(), code.size());
+}
+
+void Terminal::Interrupt()
+{
+    DefaultPen();
+    //ioctl(STDIN_FILENO, TIOCSETD, (char*)&ttym);
+    exit(1);
 }
